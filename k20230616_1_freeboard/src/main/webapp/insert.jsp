@@ -4,12 +4,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <head>
 <meta charset="UTF-8">
 <title>메인글 쓰기</title>
 <style type="text/css">
 	* {
-		font-family: IM 혜민;
+		font-family: 강원교육모두;
 	}
 
 	#th {
@@ -27,7 +28,11 @@
 <form class="m-3" action="insertOK.jsp" method="post">
 	<table class="table" style="width: 700px; margin-left: auto; margin-right: auto;">
 		<tr class="table-info">
-			<th colspan="3" style="font-size: 30px; text-align: center; background-color: lavender">메인글 쓰기</th>
+			<th colspan="3" style="font-size: 30px; text-align: center; background-color: lavender">
+				<i class="bi bi-pencil-square"></i>
+				메인글 쓰기
+				<i class="bi bi-pencil-square"></i>
+			</th>
 		</tr>
 		<tr>
 			<th id="th" class="align-middle table-info" width="100">
