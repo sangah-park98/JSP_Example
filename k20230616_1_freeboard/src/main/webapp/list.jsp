@@ -1,3 +1,4 @@
+<%@page import="com.tjoeun.service.FreeboardCommentService"%>
 <%@page import="com.tjoeun.vo.FreeboardVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.tjoeun.vo.FreeboardList"%>
@@ -23,6 +24,7 @@
 	}
 	
 	FreeboardService service = FreeboardService.getInstance();
+	FreeboardCommentService commentService = FreeboardCommentService.getInstance();
 	
 //	모든 공지글을 얻어온다.(페이징 작업 없이 그냥 공지하면 되니까 ArrayList에 넣기)
 	ArrayList<FreeboardVO> notice = service.selectNotice();
@@ -31,6 +33,14 @@
 	FreeboardList freeboardList = service.selectList(currentPage);
 	
 //	공지글과 메인글의 댓글 개수를 얻어와서 FreeboardVO 클래스의 commentCount에 저장한다.
+	for (FreeboardVO vo : notice) {
+		vo.setCommentCount(commentService.commentCount(vo.getIdx()));
+	}
+	for (FreeboardVO vo : freeboardList.getList()) {
+		vo.setCommentCount(commentService.commentCount(vo.getIdx()));
+		
+	}
+	
 
 //	공지글과 메인글의 목록을 request 영역에 저장해서 메인글을 화면에 표시하는 페이지(listView.jsp)로 넘겨준다.
 	request.setAttribute("notice", notice);

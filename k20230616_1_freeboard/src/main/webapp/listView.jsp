@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판 보기</title>
 <style type="text/css">
 	* {
 		font-family: 강원교육모두;

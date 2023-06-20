@@ -81,11 +81,11 @@
 			</td>
 			<th id="th" class="align-middle table-info" width="100">
 				공지글 
-				<c:if test="${fn:trim(vo.notice) == 'YES'}"> <!-- 공지글인가? -->
-					<input class="form-check-input" type="checkbox" name="notice" value="YES" checked="checked"/>
+				<c:if test="${fn:trim(vo.notice) == 'on'}"> <!-- 공지글인가? -->
+					<input class="form-check-input" type="checkbox" name="notice" checked="checked"/>
 				</c:if>
-				<c:if test="${fn:trim(vo.notice) != 'YES'}"> <!-- 공지글이 아닌가? -->
-					<input class="form-check-input" type="checkbox" name="notice" value="YES"/>
+				<c:if test="${fn:trim(vo.notice) != 'on'}"> <!-- 공지글이 아닌가? -->
+					<input class="form-check-input" type="checkbox" name="notice"/>
 				</c:if>
 			</th>
 		</tr>

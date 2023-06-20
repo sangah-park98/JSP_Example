@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.tjoeun.vo.FreeboardCommentVO;
 import com.tjoeun.vo.FreeboardVO;
 
 
@@ -71,6 +72,7 @@ public class FreeboardDAO {
 		System.out.println("FreeboardDAO의 selectNotice()");
 		return (ArrayList<FreeboardVO>) mapper.selectList("selectNotice");
 	}
+
 	
 	
 	

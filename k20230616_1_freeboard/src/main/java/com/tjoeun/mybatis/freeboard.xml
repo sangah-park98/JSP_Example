@@ -46,7 +46,7 @@
 	
 	<!-- 모든 공지글을 얻어온다. -->
 	<select id="selectNotice" resultType="vo">
-		select * from freeboard where notice = 'YES' order by idx desc
+		select * from freeboard where notice = 'on' order by idx desc
 	</select>
 	
 	

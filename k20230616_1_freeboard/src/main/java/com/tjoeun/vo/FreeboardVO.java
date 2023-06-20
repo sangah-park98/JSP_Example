@@ -11,7 +11,7 @@ public class FreeboardVO {
 	private String content; // 메인글 내용
 	private Date writeDate;
 	private int hit; // 조회수
-	private String notice = "NO"; // 공지글 여부(YES => 공지글, NO => 일반글)
+	private String notice = ""; // 공지글 여부(YES => 공지글, NO => 일반글)
 	private String ip;
 	private int commentCount; // 댓글의 개수
 	

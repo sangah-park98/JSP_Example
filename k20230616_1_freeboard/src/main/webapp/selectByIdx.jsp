@@ -1,3 +1,5 @@
+<%@page import="com.tjoeun.service.FreeboardCommentService"%>
+<%@page import="com.tjoeun.vo.FreeboardCommentList"%>
 <%@page import="com.tjoeun.dao.FreeboardDAO"%>
 <%@page import="com.tjoeun.vo.FreeboardVO"%>
 <%@page import="com.tjoeun.service.FreeboardService"%>
@@ -25,6 +27,14 @@
 	request.setAttribute("vo", vo);
 	request.setAttribute("currentPage", currentPage);
 	request.setAttribute("enter", "\r\n");
+	
+//	job에 contentView가 넘어왔을 경우 댓글 목록을 얻어와서 request 영역에 저장시킨다.
+	if(job.equals("contentView")) {
+		FreeboardCommentList freeboardCommentList = 
+				FreeboardCommentService.getInstance().selectCommentList(idx);
+		request.setAttribute("freeboardCommentList", freeboardCommentList);
+	}
+	
 	
 //	increment.jsp에서 넘어온 경우 조회수를 증가시킨 메인글을 보여주는 페이지(contentView.jsp)로 넘겨주고
 //	contentView.jsp에서 넘어온 경우 메인글을 수정(update.jsp), 삭제(delete.jsp)하는 페이지로 request 영역에

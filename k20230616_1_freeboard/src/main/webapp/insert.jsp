@@ -47,7 +47,7 @@
 					style="width: 200px;"/>
 			</td>
 			<th id="th" class="align-middle table-info" width="100">
-				공지글 <input class="form-check-input" type="checkbox" name="notice" value="YES"/>
+				공지글 <input class="form-check-input" type="checkbox" name="notice"/>
 			</th>
 		<tr>
 			<th id="th" class="align-middle table-info" width="100">
