@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>답변형 게시판 글 입력</title>
+<style type="text/css">
+	@font-face {
+	    font-family: 'GangwonEdu_OTFBoldA';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	
+	*{
+		font-family: GangwonEdu_OTFBoldA;
+	}
+	
+	#id {
+		background-color: mistyRose;
+	}
+</style>
+</head>
+<body>
+
+<form action="insertOK.nhn" method="post">
+	<table width="600" align="center" border="1" cellpadding="5" cellspacing="0">
+		<tr>
+			<th id="id" colspan="2">♥ 답변형 게시판 글 입력하기 ♥</th>
+		</tr>
+		<tr>
+			<th width="100">이름</th>
+			<td width="500">
+				<input type="text" name="name"/>
+			</td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td>
+				<input type="text" name="subject" style="width: 98%;"/>
+			</td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td>
+				<textarea rows="10" name="content" style="width: 98%; resize: none;"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="저장하기"/>
+				<input type="reset" value="다시쓰기"/>
+				<input type="button" value="돌아가기" onclick="history.back()"/>
+			</td>
+		</tr>
+	</table>
+</form>
+
+</body>
+</html>
