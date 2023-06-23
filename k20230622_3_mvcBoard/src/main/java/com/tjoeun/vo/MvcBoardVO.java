@@ -12,6 +12,7 @@ public class MvcBoardVO {
 	   private int seq; 
 	   private int hit = 0; 
 	   private Date writeDate;
+	   
 	   public int getIdx() {
 	      return idx;
 	   }
@@ -66,6 +67,7 @@ public class MvcBoardVO {
 	   public void setWriteDate(Date writeDate) {
 	      this.writeDate = writeDate;
 	   }
+	   
 	   @Override
 	   public String toString() {
 	      return "MvcVO [idx=" + idx + ", name=" + name + ", subject=" + subject + ", content=" + content + ", gup=" + gup

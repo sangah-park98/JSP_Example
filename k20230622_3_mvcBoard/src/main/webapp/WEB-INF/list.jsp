@@ -15,23 +15,82 @@
 	    font-style: normal;
 	}
 	
-	*{
-		font-family: GangwonEdu_OTFBoldA;
+	* {
+		font-family:  GangwonEdu_OTFBoldA;
 	}
 	
-	#id {
-		background-color: mistyRose;
+	table {
+		margin-bottom: 5px;
+		background-color: ivory;
 	}
+	 	
+ 	.table:nth-child(2n + 1) {
+		background-color: white;
+	}
+	
 	a {
 		text-decoration: none;
+		color: black;
+	}
+	
+	a:hover {
+		color: darkgray;
+		text-decoration: none;
+	}
+	 
+	.button {
+	  background-color: pink;
+	  border: none;
+	  color: white;
+	  padding: 2px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 14px;
+	  margin: 15px 4px;
+	  transition-duration: 0.4s;
+	  cursor: pointer;
+
+	}
+
+	.button1 {
+	  background-color: white; 
+	  color: black; 
+	  border: 1px dotted pink;
+	}
+
+	.button1:hover {
+	  background-color: pink;
+	  color: black;
+	  
+	}
+
+	.button2 {
+	  background-color: pink; 
+	  color: black; 
+	  border: 2px solid white;
+	  cursor: default;
+	}
+	
+	.button3 {
+	  background-color: white; 
+	  color: black; 
+	  border: 1px solid black;
+	  
+	}
+	
+	span {
+		color: palevioletred;
+		font-weight: bold;
 	}
 </style>
+<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 	<table width="1000" align="center" border="1" cellpadding=5" cellspacing="0">
 		<tr>
-			<th colspan="5" style="font-size: 30px; text-align: center; background-color: lavender">
-				게시판 보기
+			<th colspan="5" style="font-size: 30px; text-align: center; background-color: mistyRose">
+				♥ 게시판 보기 ♥
 			</th>
 		</tr>
 		<tr>
@@ -39,7 +98,7 @@
 				${boardList.totalCount}개(${boardList.currentPage}P / ${boardList.totalPage}P)
 			</td>
 		</tr>
-			<tr>
+		<tr>
 			<th id="th" style="width: 70px;"><b>글번호</b></th>
 			<th id="th" style="width: 610px;"><b>제목</b></th>
 			<th id="th" style="width: 100px;"><b>이름</b></th>
@@ -62,14 +121,14 @@
 			<!-- 레벨에 따른 들여쓰기 -->
 			<td align="center">
 				<c:if test="${vo.lev > 0}">
-					<c:forEach var="i" begin="1" end="${vo,lev}">
+					<c:forEach var="i" begin="1" end="${vo.lev}">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</c:forEach>
 					Re.
 				</c:if>
 				<c:set var="subject" value="${fn:replace(vo.subject, '<', '&lt;')}"></c:set>
 				<c:set var="subject" value="${fn:replace(subject, '>', '&gt;')}"></c:set>
-				<a href="increment.jsp?idx=${vo.idx}&currentPage=${currentPage}">
+				<a href="increment.nhn?idx=${vo.idx}&currentPage=${boardList.currentPage}">
 					${subject}
 				</a>
 			</td>
@@ -86,7 +145,103 @@
 		</tr>
 		</c:forEach>	
 		</c:if>
+				<tr>
+			<td colspan="5" align="center">
+			
+				<c:if test="${boardList.currentPage > 1}">
+					<button 
+						class='button button1' 
+						type="button" 
+						title="첫 페이지로 이동합니다." 
+						onclick="location.href='?currentPage=1'"
+					>처음</button>
+				</c:if>
+			
+				<c:if test="${boardList.currentPage <= 1}">
+					<button 
+						class='button button2' 
+						type="button" 
+						disabled="disabled" 
+						title="이미 첫 페이지 입니다."
+					>처음</button>
+				</c:if>
+				
+				<c:if test="${boardList.startPage > 1}">
+					<button 
+						class='button button1' 
+						type="button" 
+						title="이전 10페이지로 이동합니다." 
+						onclick="location.href='?currentPage=${boardList.startPage - 1}'"
+					>이전</button>
+				</c:if>
+				
+				<c:if test="${boardList.startPage <= 1}">
+					<button 
+						class='button button2' 
+						type="button" 
+						disabled="disabled" 
+						title="이미 첫 10페이지 입니다."
+					>이전</button>
+				</c:if>
+				
+				<c:forEach var="i" begin="${boardList.startPage}" end="${boardList.endPage}" step="1">
+					<c:if test="${boardList.currentPage == i}">
+						<button class='button button2' type='button' disabled='disabled'>${i}</button>
+					</c:if>
+					<c:if test="${boardList.currentPage != i}">
+						<button 
+							class='button button1' 
+							type='button' 
+							title="${i}페이지로 이동합니다."
+							onclick="location.href='?currentPage=${i}'"
+						>${i}</button>
+					</c:if>
+				</c:forEach>
+				
+				<c:if test="${boardList.endPage < boardList.totalPage}">
+					<button 
+						class='button button1' 
+						type="button" 
+						title="다음 10페이지로 이동합니다." 
+						onclick="location.href='?currentPage=${boardList.endPage + 1}'"
+					>다음</button>
+				</c:if>
+				
+				<c:if test="${boardList.endPage >= boardList.totalPage}">
+					<button 
+						class='button button2' 
+						type="button" 
+						disabled="disabled" 
+						title="이미 마지막 10페이지 입니다."
+					>다음</button>
+				</c:if>
+				
+				<c:if test="${boardList.currentPage < boardList.totalPage}">
+				<button
+					class='button button1'  
+					type="button" 
+					title="마지막 페이지로 이동합니다." 
+					onclick="location.href='?currentPage=${boardList.totalPage}'"
+				>끝</button>
+				</c:if>
+				
+				<c:if test="${boardList.currentPage >= boardList.totalPage}">
+					<button 
+						class='button button2' 
+						type="button" 
+						disabled="disabled" 
+						title="이미 마지막 페이지 입니다."
+					>끝</button>
+				</c:if>
+				
+			</td>
+		</tr>
 		
+		<tr>
+			<td colspan="5" align="right">
+				<input type="button" value="글쓰기" onclick="location.href='insert.nhn'"/>
+			</td>
+		</tr>
 	</table>
 
 </body>
