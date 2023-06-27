@@ -41,7 +41,6 @@ public class FileDAO {
 			e.printStackTrace();
 		}
 	}
-	
 //	테이블에 저장된 업로드된 전체 파일 목록을 얻어오는 메소드
 	public ArrayList<FileVO> getUploadList() {
 		System.out.println("FIleDAO 클래스의 getUploadList()");
@@ -67,7 +66,8 @@ public class FileDAO {
 		// 업로드된 파일 목록을 리턴시킨다.
 		return list;
 	}
-
+	
+//	검색어로 입력된 문자열이 name 필드에 포함된 데이터만 얻어오는 메소드	
 	public void hit(String fileRealname) {
 		System.out.println("fileDAO 클래스의 hit()");
 		try {
