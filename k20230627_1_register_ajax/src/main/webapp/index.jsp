@@ -61,7 +61,6 @@
 					<input id="userName" class="form-control" type="text" name="userName" 
 						placeholder="이름을 입력하세요." autocomplete="off"/>
 				</td>
-
 			</tr>
 			<tr>
 				<th style="vertical-align: middle; background-color: mistyRose;">나이</th>
